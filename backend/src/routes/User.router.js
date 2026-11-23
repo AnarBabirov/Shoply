@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { UserController } from "../controllers/User.controller.js";
+import AuthMiddleWare from "../middlewares/AuthMiddleWare.js";
+const router = Router();
+const userController = new UserController();
+router.post("/register", userController.userRegistration);
+router.post("/login", userController.userLogin);
+router.get("/getProfile",AuthMiddleWare, userController.getUserById);
+router.put("/update",AuthMiddleWare, userController.updateUser);
+router.delete("/delete",AuthMiddleWare, userController.deleteUser);
+export default router;
