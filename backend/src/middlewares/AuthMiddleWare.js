@@ -24,4 +24,19 @@ const AuthMiddleWare = (req, res, next) => {
   }
 };
 
-export default AuthMiddleWare;
+const AdminMiddleWare = (req, res, next) => {
+  if (req.user.role !== "admin") {
+    res.status(403).json({
+      message: "You are not admin!"
+    })
+  }
+  else if (req.user.role == "admin") {
+    next()
+  }
+
+
+
+
+}
+
+export { AuthMiddleWare, AdminMiddleWare };

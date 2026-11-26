@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { UserController } from "../controllers/User.controller.js";
-import AuthMiddleWare from "../middlewares/AuthMiddleWare.js";
+import {AuthMiddleWare} from "../middlewares/AuthMiddleWare.js";
 const router = Router();
 const userController = new UserController();
 router.post("/register", userController.userRegistration);
