@@ -1,4 +1,4 @@
-import img1 from "/public/image/img1.jpg"
+import img1 from "../image/img1.jpg";
 
 
 export const Hero = () => {

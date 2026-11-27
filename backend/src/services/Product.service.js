@@ -1,7 +1,7 @@
 import Product from "../models/Product.model.js";
 export class ProductService {
   async createProduct(product) {
-    const { name, description, price, cost, img, category, stock } = product;
+    const { name, description, price, cost, img, category, stock, rating } = product;
     const createProduct = await Product.create({
       name,
       description,
@@ -10,6 +10,7 @@ export class ProductService {
       img,
       category,
       stock,
+      rating
     });
     if (!createProduct) {
       throw new Error("Failed to create product");
@@ -36,6 +37,7 @@ export class ProductService {
           price: data.price,
           stock: data.stock,
           description: data.description,
+          rating: data.rating
         },
       },
       {
@@ -48,12 +50,12 @@ export class ProductService {
     }
     return update;
   }
-    async deleteProduct(id) {
+  async deleteProduct(id) {
     const deleteProduct = await Product.findByIdAndDelete(id);
     if (!deleteProduct) {
       throw new Error("Failed to delete product!");
     }
     return deleteProduct;
   }
-  
+
 }

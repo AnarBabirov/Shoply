@@ -1,40 +1,46 @@
+import { useState, useEffect } from "react";
+import { getAllProducts } from "../api/api";
 import { ProductCard } from "../components/ProductCard";
 export const FeaturedProducts = () => {
-  const products = [
-    {
-      name: "iPhone 16",
-      price: 999,
-      rating: 4.8,
-      image: "/image/image2.jpg",
-    },
-    {
-      name: "Samsung S25",
-      price: 899,
-      rating: 4.7,
-      image: "/image/image2.jpg",
-    },
-    {
-      name: "Galaxy",
-      price: 899,
-      rating: 4.7,
-      image: "/image/image2.jpg",
-    },
-    {
-      name: "Verto",
-      price: 899,
-      rating: 4.7,
-      image: "/image/image2.jpg",
-    },
-  ];
-  return (
-    <section className="featured-products">
-      <h2>Featured Products</h2>
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        setError("");
 
-      <div className="products-grid">
-        {products.map((product, index) => (
-          <ProductCard key={index} product={product} />
+        const products = await getAllProducts();
+
+        setProducts(products);
+      }
+      catch (error) {
+        setError(error.message);
+      }
+      finally {
+        setLoading(false)
+
+      }
+
+    }
+
+
+
+    fetchProducts()
+
+  }, [])
+  return (
+    <>
+      {loading && (<h2 style={{ color: "red" }}>Loading ...</h2>)}
+      {error && (<h2>{error}</h2>)}
+      <div className="featured-products-list">
+        {products.map(product => (
+          <ProductCard key={product._id} product={product} />
+
         ))}
       </div>
-    </section>
-  );
+
+    </>
+  )
 };

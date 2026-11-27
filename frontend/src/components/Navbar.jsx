@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-export const Navbar = ({ cart }) => {
+export const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-left">
@@ -16,7 +16,8 @@ export const Navbar = ({ cart }) => {
       </div>
       <div className="nav-right">
         <NavLink to="/login">Sign in</NavLink>
-        <NavLink to="/cart">Cart ({cart.length})</NavLink>
+        <NavLink to="/register">Register</NavLink>
+        <NavLink to="/cart">Cart </NavLink>
       </div>
     </nav>
   );

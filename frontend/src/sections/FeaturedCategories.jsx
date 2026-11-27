@@ -1,7 +1,7 @@
-import img2 from "/image/img1.jpg";
-import image2 from "/image/image2.jpg";
-import image3 from "/image/image3.jpg";
-import image4 from "/image/image4.jpg";
+import img2 from "../image/electronics.jpg";
+import image2 from "../image/image2.jpg"
+import image3 from "../image/image3.jpg";
+import image4 from "../image/image4.jpg";
 export const FeaturedCategories = () => {
   return (
     <section className="categories">
@@ -15,17 +15,17 @@ export const FeaturedCategories = () => {
           <h3>Electronics</h3>
         </div>
 
-        <div className="category-card">
+        <div className="category-card-featured">
           <img src={image4} alt="Fashion" />
           <h3>Fashion</h3>
         </div>
 
-        <div className="category-card">
+        <div className="category-card-featured">
           <img src={image3} alt="Home & Living" />
           <h3>Home & Living</h3>
         </div>
 
-        <div className="category-card">
+        <div className="category-card-featured">
           <img src={image2} alt="Accessories" />
           <h3>Accessories</h3>
         </div>
